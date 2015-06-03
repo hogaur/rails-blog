@@ -65,7 +65,7 @@ describe ArticlesController, type: :controller do
       expect(assigns(:article).title).to eq("edited")
       expect(assigns(:article).text).to eq("edited text")
       expect(response.status).to eq(302)
-      expect(response).to redirect_to("articles/#{article.id}")
+      expect(response).to redirect_to("/articles/#{article.id}")
     end
 
     it 'should render edit if Article model does not validate' do
@@ -77,6 +77,17 @@ describe ArticlesController, type: :controller do
       expect(assigns(:article).text).to eq("edited text")
       expect(response.status).to eq(200)
       expect(response).to render_template("articles/edit")
+    end
+  end
+
+  describe 'articles#destroy' do
+    it 'should delete an article' do
+      article = Article.create(title: "title", text: "text")
+      count = Article.count
+      delete :destroy, id: article.id
+      expect(Article.count).to eq(count-1)
+      expect(response).to redirect_to("/articles")
+      expect(response.status).to eq(302)
     end
   end
 end

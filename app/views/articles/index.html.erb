@@ -10,6 +10,9 @@
     <tr>
       <td><%= article.title%></td>
       <td><%= article.text%></td>
+      <td><%= link_to 'Show',"/articles/#{article.id}"%></td>
+      <td><%= link_to 'Edit', "/articles/#{article.id}/edit"%></td>
+      <td><%= link_to 'Destroy', "/articles/#{article.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
