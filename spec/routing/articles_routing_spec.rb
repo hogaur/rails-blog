@@ -14,22 +14,22 @@ describe 'Articles routes' do
   end
 
   it 'should route GET /articles/:id/edit articles#edit' do
-    expect(:get => '/articles/:id/edit').to route_to('articles#edit')
+    expect(:get => '/articles/1/edit').to route_to('articles#edit',{id: "1"})
   end
 
   it 'should route GET /articles/:id to articles#show' do
-    expect(:get => '/articles/:id').to route_to('articles#show')
+    expect(:get => '/articles/1').to route_to('articles#show', {id:"1"})
   end
 
   it 'should route PATCH /articles/:id articles#update' do
-    expect(:patch => '/articles/:id').to route_to('articles#update')
+    expect(:patch => '/articles/1').to route_to('articles#update', {id: "1"})
   end
 
   it 'should route PUT /articles/:id articles#update' do
-    expect(:put => '/articles/:id').to route_to('articles#update')
+    expect(:put => '/articles/1').to route_to('articles#update', {id: "1"})
   end
 
   it 'should route DELETE /articles/:id articles#destroy' do
-    expect(:delete => '/articles/:id').to route_to('articles#destroy')
+    expect(:delete => '/articles/1').to route_to('articles#destroy', {id: "1"})
   end
 end
